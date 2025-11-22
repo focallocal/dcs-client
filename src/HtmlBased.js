@@ -223,7 +223,8 @@ class HtmlBasedSingleton {
           layout: 3,
           pageName: triggerNode.dataset.dcsPageName || pageName,
           triggerId,
-          interactMode: triggerNode.dataset.dcsInteractMode
+          interactMode: triggerNode.dataset.dcsInteractMode,
+          composerTemplate: triggerNode.dataset.dcsComposerTemplate
         },
         mode: 'PUSH',
         clientContext: true
