@@ -268,6 +268,11 @@ class HtmlBasedSingleton {
     // Make the entire trigger clickable, no highlight logic
     this.selTriggerNode = triggerNodes[0]
 
+    // Remove highlight from all triggers (defensive)
+    triggerNodes.forEach(node => {
+      node.classList.remove('dcs-highlighted');
+    });
+
     // Bring the selected node into view
     // THIS IS REQUIRED WHEN LAYOUT HAS CHANGED, BUT ALSO WHEN USING THE BACK
     // BUTTON TO A PREVIOUSLY SELECTED HEADING FAR AWAY
