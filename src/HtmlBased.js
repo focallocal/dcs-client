@@ -265,27 +265,8 @@ class HtmlBasedSingleton {
       return
     }
 
-    // Go through selected nodes
-    this.selTriggerNode = null
-    u.dom.forEach(triggerNodes, node => {
-      // Is it a highlightable trigger node?
-      if (node.dataset.dcsHighlightable) {
-        // Highlight the trigger nodes
-        node.classList.add('dcs-highlighted')
-
-        // Highlight the subsec nodes
-        const subsec = node.closest('.dcs-subsec')
-        subsec && subsec.classList.add('dcs-highlighted')
-
-        // Set one node as the selected one, with priority given to the first
-        // dcsHighlightable one. THIS IS IMPORTANT: the selected node must be a
-        // dcsHighlightable one for the default click handler to work correctly.
-        this.selTriggerNode = this.selTriggerNode || node
-      }
-    })
-
-    // Case no dcsHighlightable has been found: take the first node
-    this.selTriggerNode = this.selTriggerNode || triggerNodes[0]
+    // Make the entire trigger clickable, no highlight logic
+    this.selTriggerNode = triggerNodes[0]
 
     // Bring the selected node into view
     // THIS IS REQUIRED WHEN LAYOUT HAS CHANGED, BUT ALSO WHEN USING THE BACK
