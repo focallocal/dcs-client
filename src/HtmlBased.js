@@ -161,8 +161,10 @@ class HtmlBasedSingleton {
 
   //----------------------------------------------------------------------------
 
-  _onDiscourseRoutePushed({ route, descr, counts, clientContext, origin }) {
+  _onDiscourseRoutePushed({ route, descr, counts, clientContext, origin, routeSequenceId }) {
     this.currentRoute = route
+    // Store the sequence ID to echo back in postSetRouteProps
+    this.currentRouteSequenceId = routeSequenceId
 
     // Case init
     if (this.resolveConnect) {
@@ -200,7 +202,8 @@ class HtmlBasedSingleton {
         (this.selTriggerNode &&
           this.selTriggerNode.dataset.dcsDiscourseTitle) ||
         document.documentElement.dataset.dcsDiscourseTitle
-      comToPlugin.postSetRouteProps({ category, discourseTitle })
+      // Include routeSequenceId so plugin can validate message is not stale
+      comToPlugin.postSetRouteProps({ category, discourseTitle, routeSequenceId: this.currentRouteSequenceId })
     }
   }
 
@@ -262,7 +265,7 @@ class HtmlBasedSingleton {
 
     // Case tag not found
     if (!triggerNodes.length) {
-      comToPlugin.postSetRouteProps({ error })
+      comToPlugin.postSetRouteProps({ error, routeSequenceId: this.currentRouteSequenceId })
       return
     }
 

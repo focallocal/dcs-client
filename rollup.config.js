@@ -12,7 +12,7 @@ const plugins = [resolve(), sourcemaps(), prod && terser({ toplevel: true })]
 
 export default [
   {
-    input: 'src/comToPlugin.js',
+    input: 'src/ComToPlugin.js',
     output: {
       file: 'dist/comToPlugin.js',
       format: 'umd',
@@ -23,9 +23,9 @@ export default [
     plugins
   },
   {
-    input: 'src/htmlBased.js',
+    input: 'src/HtmlBased.js',
     output: {
-      file: 'dist/htmlBased.js',
+      file: 'dist/HtmlBased.js',
       format: 'es',
       sourcemap
     },

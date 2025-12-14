@@ -93,7 +93,7 @@ class ComToPlugin {
 	/**
    * @param {RouteProps} props
    */
-	postSetRouteProps({ category, discourseTitle, error }) {
+	postSetRouteProps({ category, discourseTitle, error, routeSequenceId }) {
 		this._bellhop.send('m6', arguments[0])
 	}
 
